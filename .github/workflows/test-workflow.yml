@@ -1,0 +1,17 @@
+name: buildRelease
+on:
+  push:
+   branches:
+   - master
+   - development
+   resolves: "Create Release"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: "Create Release"
+      uses: kbusby-reapit/github-create-release-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.actionstoken }}
+        GITHUB_REPOSITORY: kbusby-reapit/test-repo
